@@ -15,7 +15,16 @@ Installation
 ---------------
 
 ### Option 1: RECOMMENDED Use via CPM.cmake
+
+add this to your CMakeLists.txt
 ```cmake
+file(DOWNLOAD
+  https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake
+)
+
+include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
+
 CPMAddPackage(
   NAME TimerLib
   GITHUB_REPOSITORY EmeraldDev52/TimerLib
@@ -23,6 +32,7 @@ CPMAddPackage(
 )
 ```
 ### Option 2: Add as a subdirectory
+clone the github and add this to your cmake
 
 ```cmake
 add_subdirectory(path/to/TimerLib)
