@@ -6,20 +6,18 @@ project(TimerLib
     LANGUAGES CXX
 )
 
-# Library target
 add_library(TimerLib STATIC src/timer.cpp)
 
-# Header include path
 target_include_directories(TimerLib
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
 
-# Set C++ standard (optional but good practice)
+
 target_compile_features(TimerLib PUBLIC cxx_std_11)
 
-# Export targets
+
 include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
@@ -28,7 +26,7 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion
 )
 
-# Create install rules
+
 install(TARGETS TimerLib
     EXPORT TimerLibTargets
     ARCHIVE DESTINATION lib
