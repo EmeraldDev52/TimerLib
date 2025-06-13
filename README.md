@@ -2,6 +2,7 @@ TimerLib
 ========
 
 A simple cross-platform C++ timer library for benchmarking and profiling.
+
 ---
 Requirements
 =========
