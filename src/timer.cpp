@@ -35,6 +35,7 @@ namespace Timers {
     ScopedTimer::~ScopedTimer() {
         auto end = std::chrono::steady_clock::now();
         std::chrono::duration<double, std::milli> duration = end - m_start;
+        std::cout << duration.count() << "\n";
         if (durationRef != nullptr) {
             *durationRef = duration.count();
         }
