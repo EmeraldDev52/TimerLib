@@ -1,7 +1,7 @@
-#pragma once
+#include <iostream>
 #include <chrono>
 #include <thread>
-#include "../include/timer.h"
+#include "TimerLib/timer.h"
 
 namespace Timers {
 

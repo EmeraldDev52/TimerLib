@@ -1,12 +1,11 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
+project(TimerLib VERSION 1.0 LANGUAGES CXX)
 
-project(TimerLib
-    VERSION 1.0.0
-    DESCRIPTION "A simple cross-platform C++ timer library"
-    LANGUAGES CXX
-)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-add_library(TimerLib STATIC src/timer.cpp)
+add_library(TimerLib STATIC ${SOURCES})
+
+add_library(Timers::TimerLib ALIAS TimerLib)
 
 target_include_directories(TimerLib
     PUBLIC
@@ -14,14 +13,10 @@ target_include_directories(TimerLib
         $<INSTALL_INTERFACE:include>
 )
 
-target_compile_features(TimerLib PUBLIC cxx_std_11)
-
-include(CMakePackageConfigHelpers)
-
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/TimerLibConfigVersion.cmake"
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY AnyNewerVersion
+set_target_properties(TimerLib PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
+    POSITION_INDEPENDENT_CODE ON
 )
 
 install(TARGETS TimerLib
@@ -37,17 +32,5 @@ install(DIRECTORY include/ DESTINATION include)
 install(EXPORT TimerLibTargets
     FILE TimerLibTargets.cmake
     NAMESPACE TimerLib::
-    DESTINATION lib/cmake/TimerLib
-)
-
-configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/TimerLibConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/TimerLibConfig.cmake"
-    INSTALL_DESTINATION lib/cmake/TimerLib
-)
-
-install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/TimerLibConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/TimerLibConfigVersion.cmake"
     DESTINATION lib/cmake/TimerLib
 )
