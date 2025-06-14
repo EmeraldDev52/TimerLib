@@ -36,6 +36,11 @@ CPMAddPackage(
   GITHUB_REPOSITORY EmeraldDev52/TimerLib
   GIT_TAG main
 )
+
+
+# LINK IT TO YOUR PEOJECT WITH SOMETHING LIKE
+add_executable(MyProject source.cpp)
+target_link_libraries(MyProject PRIVATE TimerLib)
 ```
 ### Option 2: Add as a subdirectory
 clone the github and add this to your cmake
