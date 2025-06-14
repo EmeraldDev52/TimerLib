@@ -7,6 +7,7 @@ A simple cross-platform C++ timer library for benchmarking and profiling.
 Requirements
 =========
 CMake
+
 a c++ compiler(duh)
 
 Features
