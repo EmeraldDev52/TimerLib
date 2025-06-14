@@ -22,25 +22,34 @@ Installation
 
 ### Option 1: RECOMMENDED Use via CPM.cmake
 
-add this to your CMakeLists.txt
+example CMakeLists.txt
 ```cmake
+cmake_minimum_required(VERSION 3.14)
+project(my_project LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 1 Download CPM.cmake into build dir
 file(DOWNLOAD
   https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake
   ${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake
 )
 
+# 2 Include and initialize CPM
 include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
 
+# 3 Fetch TimerLib
 CPMAddPackage(
-  NAME TimerLib
+  NAME        TimerLib
   GITHUB_REPOSITORY EmeraldDev52/TimerLib
-  GIT_TAG main
+  GIT_TAG     main
+  OPTIONS     "BUILD_TESTS OFF"
 )
 
-
-# LINK IT TO YOUR PEOJECT WITH SOMETHING LIKE
-add_executable(MyProject source.cpp)
-target_link_libraries(MyProject PRIVATE TimerLib)
+# 4 Link to your executable
+add_executable(my_app src/main.cpp)
+target_link_libraries(my_app PRIVATE Timers::TimerLib)
 ```
 ### Option 2: Add as a subdirectory
 clone the github and add this to your cmake
