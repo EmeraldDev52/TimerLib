@@ -1,6 +1,0 @@
-C:/CppProjects/Timer/out/build/x64-Debug/CMakeFiles/TimerLib.dir
-C:/CppProjects/Timer/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/CppProjects/Timer/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-C:/CppProjects/Timer/out/build/x64-Debug/CMakeFiles/list_install_components.dir
-C:/CppProjects/Timer/out/build/x64-Debug/CMakeFiles/install.dir
-C:/CppProjects/Timer/out/build/x64-Debug/CMakeFiles/install/local.dir
