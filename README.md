@@ -77,7 +77,7 @@ target_link_libraries(MyApp PRIVATE TimerLib::TimerLib)
 #include <TimerLib/timer.h>
 
 void myFunction() {
-    TimerLib::Timer timer;
+    Timers::Timer timer;
     // ... do work ...
     std::cout << "Elapsed time: " << timer.elapsedMilliseconds() << " ms\n";
 }
@@ -87,21 +87,30 @@ or
 #include <TimerLib/timer.h>
 
 void myFunction() {
-    TimerLib::ScopedTimer timer;
+    Timers::ScopedTimer timer;
     // ... do work ...
 } 
 ```
 This will output the duration after it gets destroyed (hence being scope based) 
-or even
+or
 ```cpp
 void myFunction() {
-	double someDouble;
+    double someDouble;
 
     if(something){
-	    TimerLib::ScopedTimer timer(&someDouble);
+	    Timers::ScopedTimer timer(&someDouble);
 			//... do work ...        
     }
     std::cout << "if statement took" << someDouble << "to execute"
     
 } 
 ```
+or even
+```cpp
+void myFunction() {
+    double someDouble;
+    Timers::ScopedTimer timer = new Timers::ScopedTimer(&someDouble);
+    //something
+    delete timer; 
+    //something
+} 
