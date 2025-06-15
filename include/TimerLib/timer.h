@@ -28,7 +28,7 @@ namespace Timers {
         ~ScopedTimer();
 
     private:
-        double* durationRef;
+        double* m_durationRef;
         std::chrono::high_resolution_clock::time_point m_start;
     };
 }
