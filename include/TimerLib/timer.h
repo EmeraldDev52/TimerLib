@@ -24,11 +24,12 @@ namespace Timers {
 
     // scope based timer that calculates based on the lifetime of the object. more precise
     struct ScopedTimer {
-        ScopedTimer(double* outDuration);
+        ScopedTimer(const char* label, double* outDuration = nullptr);
         ~ScopedTimer();
 
     private:
-        double* m_durationRef;
+        double* m_durationRef{nullptr};
         std::chrono::high_resolution_clock::time_point m_start;
+        const char* m_label{""};
     };
 }
