@@ -88,7 +88,7 @@ or
 #include <TimerLib/timer.h>
 
 void myFunction() {
-    Timers::ScopedTimer timer;
+    Timers::ScopedTimer timer("someLabel");
     // ... do work ...
 } 
 ```
@@ -99,7 +99,7 @@ void myFunction() {
     double someDouble;
 
     if(something){
-	    Timers::ScopedTimer timer(&someDouble);
+	    Timers::ScopedTimer timer("someLabel", &someDouble);
 			//... do work ...        
     }
     std::cout << "if statement took" << someDouble << "to execute"
@@ -110,8 +110,8 @@ or even
 ```cpp
 void myFunction() {
     double someDouble;
-    Timers::ScopedTimer timer = new Timers::ScopedTimer(&someDouble);
+    Timers::ScopedTimer timer = new Timers::ScopedTimer("someLabel", &someDouble);
     //something
-    delete timer; 
+    delete timer; // calls the destructor here, outputting the time to console and someDouble (if applicable)
     //something
 } 
